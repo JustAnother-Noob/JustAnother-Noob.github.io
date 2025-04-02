@@ -1,0 +1,638 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 70px;
+    max-width: 100%;
+    margin: 0;
+}
+
+.navbar-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2); /* Add only a grey bottom border */
+    padding-bottom: 10px; /* Add gap at the bottom from the inside */
+    position: sticky; /* Make the navbar sticky */
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+main {
+    padding: 20px;
+}
+
+.navbar-logo img {
+    height: 75px; /* Increased from 45px */
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.navbar-logo a:hover img {
+    transform: scale(1.05);
+}
+
+/* Navigation Links */
+.navbar-links > li > a {
+    display: flex;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar-links > li > a:hover {
+    color: #007bff;
+}
+
+.nav-icon {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+    filter: brightness(0) saturate(100%) invert(37%) sepia(74%) saturate(1529%) hue-rotate(194deg) brightness(95%) contrast(101%); /* Blue color (#007bff) */
+}
+
+.navbar-links > li > a:hover .nav-icon {
+    filter: brightness(0); /* Makes the SVG black on hover */
+}
+
+/* Special styling for Deals link */
+.navbar-links > li > a[href="/deals"] {
+    color: #e63946; /* Red color for the Deals text */
+}
+
+.navbar-links > li > a[href="/deals"] .nav-icon {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(3107%) hue-rotate(341deg) brightness(95%) contrast(88%); /* Red color for the Deals icon (#e63946) */
+}
+
+/* Underline animation for nav links */
+.underline_hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+.underline_hover:hover::after {
+    width: 100%;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: fixed; /* Change from absolute to fixed for screen centering */
+    top: 70px; /* Match navbar height */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    list-style: none;
+    padding: 20px 15px; /* Adjusted padding */
+    margin: 5px 0 0 0;
+    z-index: 1000;
+    width: 1100px; /* Further increased width */
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    display: none;
+    flex-direction: column;
+}
+
+/* Add invisible space for better hover interaction */
+.dropdown::after {
+    content: '';
+    position: absolute;
+    height: 20px; /* Invisible buffer zone */
+    width: 100%;
+    bottom: -20px;
+    left: 0;
+    z-index: 999;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdown-menu:hover {
+    display: flex; /* Keep menu visible when hovering over it */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Title for dropdown */
+.dropdown-title {
+    font-size: 18px; /* Increased from 16px */
+    font-weight: 600;
+    color: #333;
+    padding: 0 5px 12px;
+    margin-bottom: 15px; /* Increased bottom margin */
+    border-bottom: 1px solid #eaeaea;
+    display: block;
+    width: 100%;
+}
+
+/* Container for horizontal items */
+.dropdown-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* Changed to space-around for better distribution */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    width: 100%;
+    align-items: center; /* Center items vertically */
+}
+
+.dropdown-menu li {
+    margin: 0 5px; /* Reduced margins */
+    flex: 1; /* Equal flex growth */
+    min-width: 100px; /* Reduced minimum width */
+    max-width: 170px; /* Added maximum width */
+}
+
+.dropdown-menu li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px 5px; /* Reduced padding */
+    font-size: 16px; /* Increased font size */
+    font-weight: 500; /* Made the text semi-bold */
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    border-radius: 8px;
+    height: 100%;
+    justify-content: center;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f1f8ff;
+    color: #007bff;
+    transform: scale(1.08); /* Remove the transform that moves items up to keep them in container */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu .nav-icon {
+    width: 130px; /* Further increased image size */
+    height: 130px; /* Further increased image size */
+    margin: 0 0 15px 0; 
+    object-fit: contain;
+    border-radius: 4px;
+    filter: none; /* Remove any filter for PNG images */
+    transition: transform 0.3s ease;
+}
+
+.dropdown-menu li a:hover .nav-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: none; /* Keep filter none for PNG images */
+}
+
+/* Search Bar Container */
+.InputContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 500px;
+    background-color: #f5f5f5;
+    border: 1px solid #eaeaea; 
+    border-radius: 6px;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.InputContainer:hover,
+.InputContainer:focus-within {
+    background-color: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Make the selector more specific by targeting only inputs within the navigation search container */
+.navbar-container .InputContainer .input,
+.mobile-search .InputContainer .input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.9rem;
+    color: #242424;
+    padding: 0.5rem;
+}
+
+/* Similarly make the focus selector more specific */
+.navbar-container .InputContainer .input:focus,
+.mobile-search .InputContainer .input:focus {
+    border-bottom: 2px solid #007bff;
+    border-radius: 4px 4px 2px 2px;
+}
+
+/* Login Button */
+.nav-login-btn {
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    background: #007bff;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.nav-login-btn .nav-button-text {
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid #007bff;
+    border-radius: 6px;
+    padding: 0.6em 1.2em;
+    background: #ffffff;
+    color: #000;
+    transform: translateY(-0.2em);
+    transition: transform 0.1s ease;
+}
+
+.nav-login-btn:hover {
+    transform: scale(1.02);
+}
+
+.nav-login-btn:hover .nav-button-text {
+    transform: translateY(-0.33em);
+}
+
+.nav-login-btn:active .nav-button-text {
+    transform: translateY(0);
+}
+
+/* Cart Container */
+.cart-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cart-link:hover {
+    transform: scale(1.1) translateY(-2px);
+}
+
+.cart-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0); /* Makes the SVG black */
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.cart-link:hover .cart-icon {
+    filter: brightness(0) saturate(100%) invert(37%) sepia(74%) saturate(1529%) hue-rotate(194deg) brightness(95%) contrast(101%); /* Blue color (#007bff) on hover */
+    transform: rotate(-5deg);
+}
+
+/* Cart Count Badge */
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #e63946; /* Red background for better visibility */
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cart-link:hover .cart-count {
+    transform: scale(1.1);
+    background-color: #007bff; /* Changes to blue on hover to match the icon */
+}
+
+/* Media query for smaller laptops/tablets */
+@media screen and (max-width: 1250px) {
+    .navbar-container {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 15px 20px;
+    }
+    
+    .navbar-logo {
+        flex: 0 0 auto;
+        margin-right: auto;
+    }
+    
+    .navbar-right {
+        flex: 0 0 auto;
+        margin-left: auto;
+    }
+    
+    .navbar-links {
+        flex-basis: 100%;
+        order: 3;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px solid #eaeaea;
+    }
+    
+    /* Adjust dropdown for smaller screens */
+    .dropdown-menu {
+        width: 90vw;
+        top: auto;
+    }
+    
+    .dropdown-items {
+        flex-wrap: wrap;
+    }
+    
+    .dropdown-menu li {
+        flex: 1 0 calc(33.333% - 20px);
+        margin: 10px;
+        max-width: none;
+    }
+    
+    .dropdown-menu .nav-icon {
+        width: 100px;
+        height: 100px;
+    }
+    
+    /* Remove the search bar width reduction */
+    .InputContainer {
+        max-width: 100%; /* Keep full width instead of 250px */
+    }
+}
+
+/* Another breakpoint for even smaller screens but not mobile yet */
+@media screen and (max-width: 900px) {
+    .navbar-links {
+        gap: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .nav-icon {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .dropdown-menu li {
+        flex: 1 0 calc(50% - 20px); /* 2 items per row */
+    }
+    
+    /* Remove the search bar width reduction */
+    .InputContainer {
+        max-width: 100%; /* Keep full width instead of 150px */
+    }
+}
+
+/* Mobile menu button - hidden by default */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* Mobile-only elements - hidden by default */
+.mobile-search,
+.mobile-login {
+    display: none;
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+        order: 3;
+        margin-left: 15px;
+    }
+    
+    .navbar-container {
+        flex-wrap: wrap;
+        padding: 10px 15px;
+        height: auto;
+    }
+    
+    .navbar-logo img {
+        height: 50px;
+    }
+    
+    .navbar-right {
+        gap: 15px;
+    }
+    
+    .navbar-links {
+        flex-basis: 100%;
+        flex-direction: column;
+        gap: 0;
+        display: none;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding: 0;
+        margin-top: 10px;
+        box-sizing: border-box; /* Ensure padding and borders are included in width */
+        width: 100%;
+    }
+    
+    .navbar-links.show {
+        display: flex;
+    }
+    
+    .navbar-links > li {
+        box-sizing: border-box; /* Ensure padding and borders are included in width */
+        width: 100%;
+        border-bottom: 1px solid #eaeaea;
+        margin: 0; /* Remove any margin */
+    }
+    
+    .navbar-links > li > a {
+        box-sizing: border-box; /* Ensure padding and borders are included in width */
+        padding: 15px;
+        width: 100%;
+        display: flex;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden; /* Prevent overflow */
+    }
+    
+    .dropdown-title {
+        padding: 10px 15px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .dropdown-items {
+        flex-wrap: wrap;
+        padding: 0 10px 10px 10px;
+    }
+    
+    .dropdown-menu li {
+        flex: 1 0 100%;
+        max-width: 100%;
+        margin: 5px 0;
+        box-sizing: border-box;
+    }
+    
+    .dropdown-menu li a {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 10px;
+    }
+    
+    .dropdown-menu .nav-icon {
+        width: 80px; /* Increased from 60px */
+        height: 80px; /* Increased from 60px */
+        margin: 0 15px 0 0; /* Adjust margins - remove bottom margin */
+    }
+    
+    .InputContainer {
+        display: none;
+    }
+    
+    .mobile-search {
+        display: block;
+        width: 100%;
+        box-sizing: border-box; /* Ensure padding and borders are included in width */
+        margin: 0; /* Remove negative margin */
+        padding: 15px;
+        border-bottom: 1px solid #eaeaea;
+        order: -1; /* Place at the top */
+    }
+    
+    .mobile-search .InputContainer {
+        display: flex;
+        max-width: 90%; /* Reduce width to prevent overflow */
+        margin: 0 auto; /* Center the search bar */
+        padding: 0.3rem;
+        box-shadow: none; /* Remove shadow for cleaner look */
+    }
+    
+    .mobile-search .input {
+        font-size: 0.85rem;
+        padding: 0.3rem;
+        width: 100%; /* Ensure input takes full width of container */
+    }
+    
+    .nav-login-btn {
+        display: none; /* Hide the desktop login button on mobile */
+    }
+    
+    .mobile-login {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+        border-top: 1px solid #eaeaea;
+        order: 999; /* Place at the bottom */
+    }
+    
+    .mobile-login .nav-login-btn {
+        display: inline-block; /* Show the login button in mobile menu */
+        width: auto;
+        margin: 0;
+        font-size: 14px;
+    }
+    
+    .mobile-login .nav-button-text {
+        width: auto;
+        text-align: center;
+        padding: 0.4em 1em;
+    }
+    
+    /* Adjust the dropdown animation for mobile */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+}
+
+/* Very small mobile screens */
+@media screen and (max-width: 480px) {
+    .navbar-right {
+        gap: 10px;
+    }
+    
+    .InputContainer {
+        max-width: 100%; /* Keep full width instead of 120px */
+    }
+    
+    .nav-login-btn .nav-button-text {
+        padding: 0.4em 0.8em;
+        font-size: 0.9em;
+    }
+    
+    .cart-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .dropdown-menu .nav-icon {
+        width: 70px; /* Slightly smaller for very small screens */
+        height: 70px;
+    }
+}

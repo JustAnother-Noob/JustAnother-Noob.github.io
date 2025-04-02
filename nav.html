@@ -1,0 +1,142 @@
+<link rel="stylesheet" href="./css/nav.css" />
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Left: Logo -->
+    <div class="navbar-logo">
+      <a href="index.html" aria-label="Home">
+        <img src="./assets/logo.png" alt="Smart Living Tech Logo" />
+      </a>
+    </div>
+
+    <!-- Center: Navigation Links -->
+    <ul class="navbar-links">
+      <!-- Mobile-only search at top -->
+      <li class="mobile-search">
+        <div class="InputContainer">
+          <img src="./assets/icons/search.svg" alt="Search" class="searchIcon" />
+          <input
+            placeholder="Search products..."
+            id="mobile-input"
+            class="input"
+            name="text"
+            type="text"
+            aria-label="Search products"
+          />
+        </div>
+      </li>
+      
+      <!-- Regular navigation items -->
+      <li class="dropdown">
+        <a href="/products" class="underline_hover" aria-label="View all products">
+          <img src="./assets/icons/products.svg" alt="" class="nav-icon">
+          Products
+        </a>
+        <ul class="dropdown-menu">
+          <span class="dropdown-title">Browse Categories</span>
+          <div class="dropdown-items">
+            <li>
+              <a href="/products/lighting" aria-label="View Lighting products">
+                <img src="./assets/images/lightning_nav.png" alt="Lighting products" class="nav-icon">
+                Lighting
+              </a>
+            </li>
+            <li>
+              <a href="/products/security" aria-label="View Security products">
+                <img src="./assets/images/security_nav.png" alt="Security products" class="nav-icon">
+                Security
+              </a>
+            </li>
+            <li>
+              <a href="/products/climate-control" aria-label="View Climate Control products">
+                <img src="./assets/images/nav_climate.png" alt="Climate Control products" class="nav-icon">
+                Climate Control
+              </a>
+            </li>
+            <li>
+              <a href="/products/hubs" aria-label="View Hubs products">
+                <img src="./assets/images/hub_nav.png" alt="Hub products" class="nav-icon">
+                Hubs
+              </a>
+            </li>
+            <li>
+              <a href="/products/automation-kits" aria-label="View Automation Kits products">
+                <img src="./assets/images/automation_nav.png" alt="Automation Kit products" class="nav-icon">
+                Automation Kits
+              </a>
+            </li>
+          </div>
+        </ul>
+      </li>
+      <li>
+        <a href="/deals" class="underline_hover" aria-label="View current deals">
+          <img src="./assets/icons/deals.svg" alt="" class="nav-icon">
+          Deals
+        </a>
+      </li>
+      <li>
+        <a href="/installation" class="underline_hover" aria-label="Get installation services">
+          <img src="./assets/icons/installation.svg" alt="" class="nav-icon">
+          Installation
+        </a>
+      </li>
+      <li>
+        <a href="/track-order" class="underline_hover" aria-label="Track your order">
+          <img src="./assets/icons/track_order.svg" alt="" class="nav-icon">
+          Track Order
+        </a>
+      </li>
+      <li>
+        <a href="/contact" class="underline_hover" aria-label="Contact us">
+          <img src="./assets/icons/contact.svg" alt="" class="nav-icon">
+          Contact
+        </a>
+      </li>
+      
+      <!-- Mobile-only login at bottom -->
+      <li class="mobile-login">
+        <button class="nav-login-btn">
+          <span class="nav-button-text">
+            Login
+          </span>
+        </button>
+      </li>
+    </ul>
+
+    <!-- Right: Search, Cart, Login -->
+    <div class="navbar-right">
+      <!-- Desktop-only search -->
+      <div class="InputContainer">
+        <img src="./assets/icons/search.svg" alt="Search" class="searchIcon" />
+        <input
+          placeholder="Search products..."
+          id="input"
+          class="input"
+          name="text"
+          type="text"
+          aria-label="Search products"
+        />
+      </div>
+      
+      <!-- Cart (shown on both desktop and mobile) -->
+      <div class="cart-container">
+        <a href="/cart" class="cart-link" aria-label="View Shopping Cart">
+          <img src="./assets/icons/cart.svg" alt="Shopping Cart" class="cart-icon">
+          <span class="cart-count">3</span>
+        </a>
+      </div>        
+      <!-- Desktop-only login button -->
+      <button class="nav-login-btn">
+        <span class="nav-button-text">
+          Login
+        </span>
+      </button>
+      
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Smart Living Tech</title>
+  <link rel="icon" type="image/x-icon" href="./assets/logo.ico">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/nav.css">
+  <link rel="stylesheet" href="./css/signup.css">
+  
+</head>
+<body>
+  <!-- Navbar (Loaded Dynamically) -->
+  <div id="navbar"></div>
+
+  <!-- Signup Form Container -->
+  <div class="signup-container">
+    <h1>Sign Up</h1>
+    <form id="signup-form">
+      <div class="name-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+      </div>
+      
+      <div class="form-group terms">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+      </div>
+      
+      <button type="submit" class="signup-btn"></button>
+      
+      <div class="login-link">
+        Already have an account? <a href="login.html">Log in</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Dynamically load navbar
+    fetch("nav.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar").innerHTML = data;
+            
+            // Load nav.js dynamically after navbar is inserted
+            const script = document.createElement("script");
+            script.src = "./js/nav.js";
+            script.defer = true;
+            document.body.appendChild(script);
+        })
+        .catch(error => console.error("Error loading navbar:", error));
+  </script>
+</body>
+</html>
