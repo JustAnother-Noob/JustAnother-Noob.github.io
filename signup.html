@@ -9,7 +9,10 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="./css/nav.css">
   <link rel="stylesheet" href="./css/signup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   
+  <!-- Scripts -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
   <!-- Navbar (Loaded Dynamically) -->
@@ -17,45 +20,84 @@
 
   <!-- Signup Form Container -->
   <div class="signup-container">
-    <h1>Sign Up</h1>
-    <form id="signup-form">
+    <h1>Create Your Account</h1>
+    <form id="signupForm">
       <div class="name-row">
         <div class="form-group">
-          <label for="firstName">First Name</label>
+          <label for="firstName">First Name:</label>
           <input type="text" id="firstName" name="firstName" required>
+          <div id="firstNameError" class="error-message"></div>
         </div>
         <div class="form-group">
-          <label for="lastName">Last Name</label>
+          <label for="lastName">Last Name:</label>
           <input type="text" id="lastName" name="lastName" required>
+          <div id="lastNameError" class="error-message"></div>
         </div>
       </div>
       
       <div class="form-group">
-        <label for="email">Email Address</label>
+        <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
+        <div id="emailError" class="error-message"></div>
       </div>
       
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+        <label for="password">Password:</label>
+        <div class="pwd-container">
+          <input type="password" id="password" name="password" required 
+                 aria-describedby="passwordRules passwordError">
+          <img id="show-pwd" src="/assets/icons/shown_password.svg" alt="Toggle password visibility" 
+               style="filter: brightness(0);" />
+        </div>
+        <div id="passwordError" class="error-message" aria-live="polite"></div>
+        <div class="password-rules" id="passwordRules">
+          <strong>Password requirements:</strong>
+          <ul>
+            <li id="length">At least 8 characters</li>
+            <li id="uppercase">Contains uppercase letter</li>
+            <li id="lowercase">Contains lowercase letter</li>
+            <li id="number">Contains number</li>
+            <li id="special">Contains special character</li>
+          </ul>
+        </div>
       </div>
       
       <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <label for="confirmPassword">Confirm Password:</label>
+        <div class="pwd-container">
+          <input type="password" id="confirmPassword" name="confirmPassword" required>
+          <img id="show-confirm-pwd" src="/assets/icons/shown_password.svg" alt="Show Password" style="filter: brightness(0);" />
+        </div>
+        <div id="confirmError" class="error-message"></div>
       </div>
       
-      <div class="form-group terms">
-        <input type="checkbox" id="terms" name="terms" required>
-        <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+      <div class="terms">
+        <input type="checkbox" id="t&cCheckbox" required checked>
+        <label for="t&cCheckbox">I agree to the <a href="#">terms and conditions</a>.</label>
       </div>
+      <div id="t&cError" class="error-message"></div>
+      
+      <div class="g-recaptcha"
+        data-sitekey="6LdHU_0qAAAAAPeJGSJhhVigGOoMTRv5peDU9uG4"
+        data-callback="recaptchaSuccess"
+        data-expired-callback="recaptchaExpired"
+        data-error-callback="recaptchaError">
+      </div>
+      <div id="recaptchaError" class="error-message"></div>
+      
+      <!-- Add status message container for form-wide errors -->
+      <div id="statusMessage" class="status-message" style="display: none;"></div>
       
       <button type="submit" class="signup-btn"></button>
       
-      <div class="login-link">
-        Already have an account? <a href="login.html">Log in</a>
+      <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Creating your account...</p>
       </div>
     </form>
+    <div class="login-link">
+      Already have an account? <a href="login.html">Log in</a>
+    </div>
   </div>
 
   <script>
@@ -73,5 +115,6 @@
         })
         .catch(error => console.error("Error loading navbar:", error));
   </script>
+  <script src="js/signup.js" defer></script>
 </body>
 </html>
